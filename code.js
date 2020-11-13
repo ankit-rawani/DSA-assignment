@@ -49,13 +49,9 @@ const input = document.querySelector('#input');
 const result = document.querySelector('#result');
 const h6 = document.querySelector('h6');
 input.onkeyup = processInput;
-result.onfocus = () => {
-    result.textContent = "";
-    h6.textContent = "";
-}
 
 function processInput(e) {
-    // console.log(e);
+     console.log(e);
     if(e.key == "Enter"){
         if (!input.value.trim()) alert("Invalid input!");
         else {
@@ -78,6 +74,11 @@ function processInput(e) {
             result.textContent = removeDuplicates(int_arr).join(', ');
             
         }
+    }
+
+    if (e.key == "Backspace") {
+        result.textContent = "";
+        h6.textContent = "";
     }
 
 }
