@@ -45,6 +45,13 @@ function removeDuplicates(arr) {
 	return res;
 }
 
+function timeComplexity(arr) {
+	let t0 = performance.now();
+	removeDuplicates(arr);
+	let t1 = performance.now();
+	return t1-t0;
+}
+
 const input = document.querySelector('#input');
 const result = document.querySelector('#result');
 const h6 = document.querySelector('h6');
@@ -71,8 +78,8 @@ function processInput(e) {
             });
 
             h6.textContent = "Modified array";
-            result.textContent = removeDuplicates(int_arr).join(', ');
-            
+			result.textContent = removeDuplicates(int_arr).join(', ');   
+			console.log(timeComplexity(int_arr)); //check console
         }
     }
 
