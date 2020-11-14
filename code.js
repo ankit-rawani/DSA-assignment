@@ -60,23 +60,24 @@ input.onkeyup = processInput;
 function processInput(e) {
      console.log(e);
     if(e.key == "Enter"){
-        if (!input.value.trim()) alert("Invalid input!");
+        if (!input.value.trim()) M.toast({html:"Invalid Input!", displayLength:1000})
         else {
             let arr = input.value.trim().split(' ');
             let int_arr = [];
-            console.log(arr);
-            arr.forEach(el => {
-                if(!Number(el)) {
-                    if(!el) {
-                        alert("You've given some extra spaces, please give only one space after each element.");
-                    }
-                    alert(el+" is not a number!");
-                }
-                else {
-                    int_arr.push(Number(el));
-                }
-            });
-
+			console.log(arr);
+			for(let i = 0; i < arr.length; i++) {
+				if(!Number(arr[i])) {
+					if(isNaN(Number(arr[i]))) {
+						M.toast({html:`${arr[i]} is not a number`, displayLength:1000});
+						break;
+					}
+					M.toast({html:"You've given some extra spaces, please give only one space after each element.", displayLength:1000});
+					break;
+				}
+				else {
+					int_arr.push(Number(arr[i]));
+				}
+			}
             h6.textContent = "Modified array";
 			result.textContent = removeDuplicates(int_arr).join(', ');   
 			console.log(timeComplexity(int_arr)); //check console
