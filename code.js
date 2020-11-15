@@ -66,11 +66,11 @@ function processInput(e) {
             let int_arr = [];
 			console.log(arr);
 			for(let i = 0; i < arr.length; i++) {
-				if(!Number(arr[i])) {
-					if(isNaN(Number(arr[i]))) {
-						M.toast({html:`${arr[i]} is not a number`, displayLength:1000});
-						break;
-					}
+				if(isNaN(Number(arr[i]))) {
+					M.toast({html:`${arr[i]} is not a number`, displayLength:1000});
+					break;
+				}
+				else if(arr[i] == '') {
 					M.toast({html:"You've given some extra spaces, please give only one space after each element.", displayLength:1000});
 					break;
 				}
